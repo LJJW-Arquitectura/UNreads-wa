@@ -1,0 +1,80 @@
+<ion-header>
+	<ion-navbar >
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>InfoBook</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list inset>
+		<ion-card>
+			<ion-card-header>
+
+				<strong float-start>{{(book$|async)?.title}}</strong>
+				<ion-chip ion-button float-end *ngIf="islogged() && !readed"  (click)="read()">
+					<ion-icon  name="ios-bookmark"></ion-icon>
+					<ion-label >¿Lo has leido?</ion-label>
+				</ion-chip> 
+				<ion-chip ion-button float-end *ngIf="islogged() && readed" disabled="true"(click)="read()">					
+					<ion-icon  name="ios-checkmark-circle-outline"></ion-icon>
+					<ion-label >Leido</ion-label>					
+				</ion-chip> 
+			</ion-card-header>
+			<ion-card-content>
+
+				{{(book$|async)?.plot}}
+			</ion-card-content>
+			<ion-item>
+				<strong>Editorial: </strong> 
+				<ion-badge>{{(book$|async)?.publisher}}</ion-badge><br>
+				<strong>ISBN: </strong> 
+				<ion-badge>{{(book$|async)?.isbn}}</ion-badge><br>
+				<strong>Paginas: </strong> 
+				<ion-badge>{{(book$|async)?.numPages}}</ion-badge><br>
+				<strong>Autores: </strong> 
+				<ion-badge id="tags" *ngFor="let author of (book$|async)?.authors">{{author}}</ion-badge><br>
+				<strong>Generos: </strong>
+				<ion-badge id="tags" *ngFor="let genre of (book$|async)?.genres">{{genre}}</ion-badge><br>
+			</ion-item>
+		</ion-card>
+	</ion-list>	
+
+	<h1>Reseñas:</h1>
+	<ion-card *ngFor="let review of (reviews$| async) ;let idx = index ">
+		<ion-card-content>
+			<p>
+				<strong>Usuario: </strong>{{aux[idx]}}<br>
+				<strong>Reseña: </strong>{{review.review}}
+			</p>
+			<ionic3-star-rating 
+				activeIcon = "ios-star"
+				defaultIcon = "ios-star-outline"
+				activeColor = "#488aff" 
+				defaultColor = "#b5b5b5"
+				readonly="true"
+				[rating]= review.grade>
+			</ionic3-star-rating>
+	</ion-card-content>
+</ion-card>
+
+<h1>Sugerencias:</h1>
+<ion-card *ngFor="let suggestion of (suggestions$| async);trackBy: trackByFn; let idx = index ">
+	<ion-card-content>
+		<p>
+			<strong>Libro sugerido:</strong>{{auxSuggestiontitle[idx]}}<br>
+			<strong>Razón: </strong>{{suggestion.reason}}
+		</p>
+		<ion-row >
+			<ion-col text-right>
+				<button ion-button clear small color="primary" (click)="itemTapped($event, auxSuggestionid[idx])">
+					<ion-icon name='arrow-dropright'></ion-icon>
+					Ver mas sobre el libro sugerido
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-card-content>
+</ion-card>
+</ion-content>

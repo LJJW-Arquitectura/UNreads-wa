@@ -1,0 +1,30 @@
+<ion-header>
+	<ion-navbar >
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Crear sugerencia</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding center text-center>
+	<ion-list>
+      <ion-item>
+          <ion-label>Libro 1</ion-label>
+          <ion-select [(ngModel)]="book_id1">
+            <ion-option *ngFor="let book of Allbooks$" value="{{book.id}}">{{book.title}}</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Libro 2</ion-label>
+          <ion-select [(ngModel)]="book_id2">
+            <ion-option *ngFor="let book of Allbooks$" value="{{book.id}}">{{book.title}}</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+			<ion-input placeholder="Razón" [(ngModel)]="reason"></ion-input>
+    </ion-item>
+	</ion-list>
+	<button ion-button full (click)="createSuggestion()">Crear</button>
+</ion-content>

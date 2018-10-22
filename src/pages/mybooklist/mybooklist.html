@@ -1,0 +1,32 @@
+
+<ion-header>
+	<ion-navbar >
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Mis Listas</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content> 
+	<ion-searchbar
+		[(ngModel)]="searchTerm"
+		(ionInput)="setFilteredItems()">
+	</ion-searchbar>
+	<ion-list inset >
+		<button ion-button full (click)="createBooklist()">Crear nueva lista</button>
+		<ion-card *ngFor="let list of lists$ ; trackBy: trackByFn" > 
+			<ion-card-content>
+				<ion-card-title>
+					{{list.name}}
+				</ion-card-title>
+				<p>Creador: {{list.user}}</p>
+				<p>Fecha de Modificacion: {{list.date_creation}}</p>
+				<button ion-button clear small color="primary" (click)="itemTapped($event, list)">
+					<ion-icon name='arrow-dropright'></ion-icon>
+					Ver mas 
+				</button>
+			</ion-card-content>
+		</ion-card>
+	</ion-list>
+</ion-content> 

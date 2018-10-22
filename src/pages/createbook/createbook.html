@@ -1,0 +1,48 @@
+<ion-header>
+	<ion-navbar >
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Crear Libro</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding center text-center>
+	<ion-list>
+		<ion-item>
+			<ion-input placeholder="Titulo" [(ngModel)]="title" required></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-input placeholder="Editorial" [(ngModel)]="publiser"></ion-input>
+    </ion-item>
+    <ion-item>
+			<ion-input placeholder="Numero Paginas" [(ngModel)]="numPages"></ion-input>
+    </ion-item>
+    <ion-item>
+			<ion-input placeholder="ISBN" [(ngModel)]="isbn"></ion-input>
+    </ion-item>
+    <ion-item>
+			<ion-textarea placeholder="Sinopsis" [(ngModel)]="plot"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+        <strong>Autores: </strong>
+        <ion-badge *ngFor="let author_b of authors">{{author_b}}</ion-badge>
+    </ion-item>
+    <ion-item>
+			<ion-input placeholder="Autor" [(ngModel)]="author"></ion-input>
+    </ion-item>
+    <button ion-button  (click)="addAuthor()">Agregar Autor</button>
+    
+    <ion-item>
+        <strong>Generos: </strong>
+        <ion-badge *ngFor="let genre_b of genres">{{genre_b}}</ion-badge>
+    </ion-item>
+    <ion-item>
+			<ion-input placeholder="Genero" [(ngModel)]="genre"></ion-input>
+    </ion-item>
+    <button ion-button  (click)="addGenre()">Agregar Genero</button>
+	</ion-list>
+	<button ion-button full (click)="createBook()">Crear</button>
+</ion-content>

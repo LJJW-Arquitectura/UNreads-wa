@@ -1,0 +1,29 @@
+
+<ion-header>
+	<ion-navbar >
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Mis reseñas</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content> 
+		<h1>Reseñas:</h1>
+		<ion-card *ngFor="let review of (reviews$| async) ;let idx = index ">
+			<ion-card-content>
+				<p>
+					<strong>Libro: </strong>{{aux[idx]}}<br>
+					<strong>Reseña: </strong>{{review.review}}
+				</p>
+				<ionic3-star-rating 
+					activeIcon = "ios-star"
+					defaultIcon = "ios-star-outline"
+					activeColor = "#488aff" 
+					defaultColor = "#b5b5b5"
+					readonly="true"
+					[rating]= review.grade>
+				</ionic3-star-rating>
+		</ion-card-content>
+	</ion-card>
+</ion-content>  

@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reseñar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <h1><strong>{{book_title}}</strong></h1>
+        <ion-item>
+          <ion-textarea placeholder="Reseña" [(ngModel)]="review" required></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ionic3-star-rating 
+            activeIcon = "ios-star"
+            defaultIcon = "ios-star-outline"
+            activeColor = "#488aff" 
+            defaultColor = "#b5b5b5"
+            readonly="false"
+            [rating]= grade>
+          </ionic3-star-rating>
+        </ion-item>
+      <button ion-button full (click)="createReview()">Reseñar</button>
+    </ion-list>
+</ion-content>

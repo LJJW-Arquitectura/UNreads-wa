@@ -20,33 +20,19 @@ import { Observable } from 'rxjs/Observable';
  export class InfobookPage {
     book_id: number;
     book$: Observable<any>;
-    reviews$: Observable<any>;
-    suggestions$: Observable<any>;
-    aux = []
-    auxSuggestiontitle = []
-    auxSuggestionid = []
+    reviews$ = []
+    suggestions$ = []
     readed
    constructor(public navCtrl: NavController, public navParams: NavParams, public provider: BooksProvider,public provideruser: UserProvider,public globalProvider: GlobalProvider) {
-     this.auxSuggestiontitle = []
-     this.auxSuggestionid = []
+
      this.readed = false          
      this.book_id = navParams.get('id');
      this.book$ = provider.getBookById(this.book_id);
-     this.reviews$ = provider.getBookReviewsByCode(this.book_id);
-     this.reviews$.subscribe(review =>{
-       for (var i = 0; i < review.length ; i++) {
-         provideruser.getUserById(review[i].user_id).subscribe(user =>{
-           this.aux.push(user.username)})
-       }
+     provider.getBookReviewsByCode(this.book_id).subscribe(review =>{
+       this.reviews$ = review
      });
-     this.suggestions$ = provider.getBookSuggestionsByCode(this.book_id); 	  
-     this.suggestions$.subscribe(suggestion =>{       
-       for (var i = 0; i < suggestion.length ; i++) {
-         provider.getBookById(suggestion[i].book_id2).subscribe(bookSuggestion =>{
-           this.auxSuggestionid.push(bookSuggestion.id),
-           this.auxSuggestiontitle.push(bookSuggestion.title)
-         })
-       }
+     provider.getBookSuggestionsByCode(this.book_id).subscribe(suggestion =>{
+       this.suggestions$ = suggestion
      });
 
      if (this.globalProvider.authenticatedId != 0) {
@@ -56,7 +42,6 @@ import { Observable } from 'rxjs/Observable';
      }
    }
 
-
    
    itemTapped(event, book_id) {
      this.navCtrl.popToRoot()
@@ -64,6 +49,7 @@ import { Observable } from 'rxjs/Observable';
        id: book_id
      });
    }
+   
    ionViewDidLoad() {
 
    }

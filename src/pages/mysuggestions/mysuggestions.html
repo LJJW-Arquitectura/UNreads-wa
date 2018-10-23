@@ -4,36 +4,33 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>Mis Sugerencias</ion-title>
+		<ion-title>Mis sugerencias</ion-title>
 	</ion-navbar>
 </ion-header>
 
-<h1>Sugerencias:</h1>
-<ion-card *ngFor="let suggestion of (suggestions$| async);trackBy: trackByFn; let idx = index ">
-	<ion-card-content>
-		<p>
-			<strong>Libro sugerido:</strong>{{auxSuggestiontitle[idx]}}<br>
-			<strong>Razón: </strong>{{suggestion.reason}}
-		</p>
+<ion-content> 
+	<h1>Sugerencias:</h1>
+	<ion-card *ngFor="let suggestion of (suggestions$| async) ;let idx = index ">
+		<ion-card-content>	
+			<p>
+				<strong>Libro1: </strong>{{suggestion.booktitle1}}<br>
+				<strong>Libro2: </strong>{{suggestion.booktitle2}}<br>
+				<strong>Razón: </strong>{{suggestion.reason}}
+			</p>
+		<ion-row>
+			<ion-col text-left>
+				<button ion-button clear small color="primary" (click)="itemTapped($event, suggestion.book_id1)">
+					<ion-icon name='arrow-dropright'></ion-icon>
+					Ver mas sobre el libro 1
+				</button>
+			</ion-col>
+			<ion-col text-right>
+				<button ion-button clear small color="primary" (click)="itemTapped($event, suggestion.book_id2)">
+					<ion-icon name='arrow-dropright'></ion-icon>
+					Ver mas sobre el libro 2
+				</button>
+			</ion-col>
+		</ion-row>
 	</ion-card-content>
 </ion-card>
-
-<ion-content> 
-		<h1>Reseñas:</h1>
-		<ion-card *ngFor="let review of (reviews$| async) ;let idx = index ">
-			<ion-card-content>
-				<p>
-					<strong>Libro: </strong>{{aux[idx]}}<br>
-					<strong>Reseña: </strong>{{review.review}}
-				</p>
-				<ionic3-star-rating 
-					activeIcon = "ios-star"
-					defaultIcon = "ios-star-outline"
-					activeColor = "#488aff" 
-					defaultColor = "#b5b5b5"
-					readonly="true"
-					[rating]= review.grade>
-				</ionic3-star-rating>
-		</ion-card-content>
-	</ion-card>
 </ion-content>  

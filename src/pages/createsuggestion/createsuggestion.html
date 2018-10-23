@@ -12,14 +12,14 @@
 	<ion-list>
       <ion-item>
           <ion-label>Libro 1</ion-label>
-          <ion-select [(ngModel)]="book_id1">
-            <ion-option *ngFor="let book of Allbooks$" value="{{book.id}}">{{book.title}}</ion-option>
+          <ion-select [(ngModel)]="book1">
+            <ion-option *ngFor="let book of Allbooks$" value="{{[book.id,book.title]}}">{{book.title}}</ion-option>
           </ion-select>
       </ion-item>
       <ion-item>
           <ion-label>Libro 2</ion-label>
-          <ion-select [(ngModel)]="book_id2">
-            <ion-option *ngFor="let book of Allbooks$" value="{{book.id}}">{{book.title}}</ion-option>
+          <ion-select [(ngModel)]="book2">
+            <ion-option *ngFor="let book of Allbooks$" value="{{[book.id,book.title]}}">{{book.title}}</ion-option>
           </ion-select>
       </ion-item>
       <ion-item>

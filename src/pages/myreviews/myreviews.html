@@ -9,21 +9,29 @@
 </ion-header>
 
 <ion-content> 
-		<h1>Reseñas:</h1>
-		<ion-card *ngFor="let review of (reviews$| async) ;let idx = index ">
-			<ion-card-content>
-				<p>
-					<strong>Libro: </strong>{{aux[idx]}}<br>
-					<strong>Reseña: </strong>{{review.review}}
-				</p>
-				<ionic3-star-rating 
-					activeIcon = "ios-star"
-					defaultIcon = "ios-star-outline"
-					activeColor = "#488aff" 
-					defaultColor = "#b5b5b5"
-					readonly="true"
-					[rating]= review.grade>
-				</ionic3-star-rating>
-		</ion-card-content>
-	</ion-card>
+	<h1>Reseñas:</h1>
+	<ion-card *ngFor="let review of (reviews$| async) ;let idx = index ">
+		<ion-card-content>
+			<p>
+				<strong>Libro: </strong>{{review.booktitle}}<br>
+				<strong>Reseña: </strong>{{review.review}}
+			</p>
+			<ionic3-star-rating 
+			activeIcon = "ios-star"
+			defaultIcon = "ios-star-outline"
+			activeColor = "#488aff" 
+			defaultColor = "#b5b5b5"
+			readonly="true"
+			[rating]= review.grade>
+		</ionic3-star-rating>
+		<ion-row>
+			<ion-col text-right>
+				<button ion-button clear small color="primary" (click)="itemTapped($event, review.book_id)">
+					<ion-icon name='arrow-dropright'></ion-icon>
+					Ver mas sobre el libro reseñado
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-card-content>
+</ion-card>
 </ion-content>  

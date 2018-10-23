@@ -4,6 +4,7 @@ import { BooksProvider } from '../../providers/books/books';
 import { InfobookPage } from '../infobook/infobook';
 import { ToastController } from 'ionic-angular';
 import { GlobalProvider } from "../../providers/global/global";
+import { MySuggestionsPage} from '../mysuggestions/mysuggestions';
 
 /**
 * Generated class for the CreatesuggestionPage page.
@@ -18,8 +19,8 @@ import { GlobalProvider } from "../../providers/global/global";
   templateUrl: 'createsuggestion.html',
 })
 export class CreatesuggestionPage {
-  book_id1: number;
-	book_id2: number;
+  book1
+	book2
   reason: string;
   user
   myId
@@ -28,23 +29,31 @@ export class CreatesuggestionPage {
   booklist= [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public provider: BooksProvider,
     public toastCtrl: ToastController, public globalProvider: GlobalProvider,) {
-      this.myId = globalProvider.authenticatedId 
-      this.user = globalProvider.user 
+    this.myId = globalProvider.authenticatedId 
+    this.user = globalProvider.user 
     provider.getAllBooks().subscribe(book => this.Allbooks$ = book);
   }
   
   createSuggestion(){
-    console.log(this.myId, this.book_id1 , this.book_id2, this.reason);
-    if(this.book_id1 == this.book_id2){
+    
+    this.book1 = this.book1.toString().split(",");   
+    this.book2 = this.book2.toString().split(",");
+    
+    this.book1[0] = Number(this.book1[0])
+    this.book2[0] = Number(this.book2[0])  
+
+    if(this.book1[0] == this.book2[0]){
       this.showMessage('Los libros a recomendar deben ser diferentes');
     }else if(this.reason == null){
       this.showMessage('Todos los campos son obligatorios');
     }
     else{   
-      this.provider.createSuggestion(this.myId, this.book_id1, this.book_id2, this.reason).subscribe(response => {
-        console.log(response);
+      this.provider.createSuggestion(this.myId, this.book1[0], this.book2[0], this.reason,this.book1[1], this.book2[1],this.user).subscribe(response => {      
+        
+        this.navCtrl.setRoot(MySuggestionsPage);
+        this.navCtrl.popToRoot();
         this.navCtrl.push(InfobookPage, {
-          id: this.book_id1
+          id: this.book1[0]
         });
       })}
     }
@@ -62,3 +71,5 @@ export class CreatesuggestionPage {
     
   }
   
+
+

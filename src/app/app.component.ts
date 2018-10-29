@@ -32,7 +32,7 @@ export class MyApp {
     public global: GlobalProvider) {
 
     this.pages = [
-    { title: 'Login', component: LoginPage ,needLogin: false, noNeedLogin: true},
+    { title: 'Iniciar Sesion', component: LoginPage ,needLogin: false, noNeedLogin: true},
     { title: 'Libros', component: AllbooksPage ,needLogin: false, noNeedLogin: false},
     { title: 'Listas', component: AllbooklistPage ,needLogin: false, noNeedLogin: false},
     { title: 'Mis listas', component: MybooklistPage ,needLogin: true, noNeedLogin: false},

@@ -16,6 +16,7 @@
 	</ion-list>
 	<button ion-button full (click)="createBooklist()">Crear Lista</button>
 	<ion-searchbar
+    placeholder="Buscar"
 		[(ngModel)]="searchTerm"
 		(ionInput)="setFilteredItems()"
 		(ionCancel)="cancel()">

@@ -34,7 +34,7 @@ export class RegisterPage {
   }
   presentToast() {
     const toast = this.toastCtrl.create({
-      message: 'User was added successfully',
+      message: 'Usuario creado correctamente',
       duration: 3000
     });
     toast.present();
@@ -44,10 +44,10 @@ export class RegisterPage {
   		this.password == undefined || 
   		this.repassword == undefined ||
   		this.email == undefined){
-  		alert ("Please fill all fields")
+  		alert ("Porfavor llenar todos los campos")
   	}
   	else if(this.password != this.repassword){
-  		alert ("Passwords do not match")
+  		alert ("Las contraseñas no coinciden")
   	}
   	else{
 	  	console.log(this.password);

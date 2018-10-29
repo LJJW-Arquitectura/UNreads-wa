@@ -10,7 +10,7 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>Login</ion-title>
+		<ion-title>Iniciar Sesion</ion-title>
 	</ion-navbar>
 
 </ion-header>
@@ -19,17 +19,17 @@
 	<ion-title id="login-title">UNreads</ion-title>
 	<ion-list>
 		<ion-item>
-			<ion-input (keyup.enter)="login()" placeholder="Username" [(ngModel)]="username">
+			<ion-input (keyup.enter)="login()" placeholder="Nombre de Usuario" [(ngModel)]="username">
 			</ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-input (keyup.enter)="login()" placeholder="Password" type="password" [(ngModel)]="password">
+			<ion-input (keyup.enter)="login()" placeholder="Contraseña" type="password" [(ngModel)]="password">
 			</ion-input>
 		</ion-item>
 	</ion-list>
-	<button ion-button full (click)="login()" (keyup.enter)="login()">Log In</button>
+	<button ion-button full (click)="login()" (keyup.enter)="login()">Iniciar Sesion</button>
 	<ion-item-divider>
-	  <p> Don't have an account? </p>
+	  <p> No tienes una cuenta? </p>
 	</ion-item-divider>
-	<button ion-button full color="light" (click)="goRegister()">Sign Up</button>
+	<button ion-button full color="light" (click)="goRegister()">Registrate</button>
 </ion-content>

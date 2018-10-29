@@ -38,14 +38,14 @@ export class LoginPage {
   }
   presentToast() {
     const toast = this.toastCtrl.create({
-      message: 'User login successful',
+      message: 'Inicio de Sesion correcto',
       duration: 3000
     });
     toast.present();
   }
   noAuthToast() {
     const toast = this.toastCtrl.create({
-      message: 'Incorrect User Or Password',
+      message: 'Nombre de usuario o contraseña incorrectos',
       duration: 3000
     });
     toast.present();
@@ -56,7 +56,7 @@ export class LoginPage {
     //Esta es la linea que no se digna funcionar hasta no darle doble click
     if(this.username == undefined || 
       this.password == undefined ){
-      alert ("Please fill all fields")
+      alert ("Porfavor llenar todos los campos")
     }
     else{
     	this.provider.getUserByUsernameAndPassword(this.username,this.password).subscribe(user =>

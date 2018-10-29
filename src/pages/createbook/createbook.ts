@@ -47,7 +47,7 @@ export class CreatebookPage {
       this.authors == undefined ||
       this.genres == undefined ||
   		this.isbn == undefined){
-  		alert ("Please fill all fields")
+  		alert ("Porfavor llenar todos los campos")
   	}else {
       this.provider.createBook(this.title, this.publiser, this.numPages, this.isbn, this.plot, this.authors, this.genres).subscribe(response => {
         this.navCtrl.push(InfobookPage, {

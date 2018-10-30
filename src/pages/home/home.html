@@ -1,14 +1,7 @@
 
-<ion-header>  
-  <ion-navbar >
-    <ion-title>ALL BOOKS</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-tabs  tabbarPlacement="top"  >
+	<a *ngFor="let p of pages;let idx = index">
+		<ion-tab  *ngIf="canShow(p)" tabTitle="{{pages[idx].title}}" [root]="p.component"></ion-tab>
+	</a>  
+</ion-tabs>
 
-<ion-content> 
-	<ion-list inset>
-		<ion-item *ngFor="let book of books$ | async" > 
-			{{book.title}}
-		</ion-item>
-	</ion-list>	
-</ion-content>  

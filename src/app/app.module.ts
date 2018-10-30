@@ -49,7 +49,9 @@ import { StarRatingModule } from 'ionic3-star-rating';
   ],
   imports: [
   BrowserModule,
-  IonicModule.forRoot(MyApp),
+  IonicModule.forRoot(MyApp,{
+    tabsPlacement: 'top',
+  }),
   GraphQLModule,
   StarRatingModule
   ],

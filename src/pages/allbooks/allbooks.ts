@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BooksProvider } from '../../providers/books/books';
 import { Observable } from 'rxjs/Observable';  
 import { InfobookPage } from '../infobook/infobook';
+import { AllbooklistPage } from '../allbooklist/allbooklist';
 import { CreatebookPage } from '../createbook/createbook';
 import { CreatereviewPage } from '../createreview/createreview';
 import { GlobalProvider } from '../../providers/global/global';
@@ -20,7 +21,7 @@ import { GlobalProvider } from '../../providers/global/global';
  	templateUrl: 'allbooks.html',
  })
  export class AllbooksPage {
-
+ 	tab1 = AllbooklistPage;
  	books$
  	Allbooks$
  	searchTerm: string = '';

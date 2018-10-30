@@ -4,7 +4,7 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';  
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-const simpleAPI = 'http://192.168.0.10:5000/graphql';
+const simpleAPI = 'http://192.168.0.8:5000/graphql';
 
 @NgModule({
   exports: [

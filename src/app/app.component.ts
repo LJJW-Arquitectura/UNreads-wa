@@ -15,6 +15,7 @@ import { ReadlistPage } from '../pages/readlist/readlist';
 import { CreatebookPage } from '../pages/createbook/createbook'
 import { MySuggestionsPage} from '../pages/mysuggestions/mysuggestions';
 import { MyReviewsPage} from '../pages/myreviews/myreviews';
+import { HomePage} from '../pages/home/home';
 
 import { GlobalProvider } from "../providers/global/global";
 @Component({
@@ -24,7 +25,7 @@ export class MyApp {
   username;
   myIcon: string;
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = AllbooksPage;
+  rootPage:any = HomePage;
   public pages: Array<{title: string, component: any, openTab? : any,needLogin?: boolean,noNeedLogin?: boolean}>;
   constructor(platform: Platform, 
     statusBar: StatusBar, 
